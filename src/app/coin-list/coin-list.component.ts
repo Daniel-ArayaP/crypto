@@ -5,6 +5,7 @@ import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {Router} from '@angular/router'
 
 
 
@@ -25,7 +26,7 @@ export class CoinListComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private api : ApiService) { }
+  constructor(private api : ApiService,private router : Router ) { }
 
       ngOnInit(): void {
         this.getBannerData();
@@ -57,5 +58,10 @@ export class CoinListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-}
+  goToDetail(row : any){
+    this.router.navigate(['coin-detail',row.id]);
 
+
+  }
+
+ }
