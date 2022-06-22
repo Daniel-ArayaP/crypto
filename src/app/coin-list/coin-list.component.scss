@@ -1,0 +1,66 @@
+.header{
+
+    display: flex;
+    height: 40%;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    color: #fff;
+    h2{
+        font-size: 3.75rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        line-height: 1.2;
+        letter-spacing: -0.0083em;
+    }
+    h6{
+        color: darkgray;
+        text-transform: capitalize;
+        font-size: 0.8rem;
+        font-weight: 500;
+        line-height: 1.57;
+        letter-spacing: 0.00715em;
+    }
+
+}
+.sub-header{
+
+    height: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.banner{
+    height: 400px;
+    width: 100%;
+    background-image: url('../../assets/banner2.jpg');
+}
+
+.card{
+    border: 0;
+    background: transparent;
+    color: #fff;
+    padding: 10px;
+    margin: 40px;
+    width: 100px;
+    height: 200px;
+    img{
+        width: 70px;
+        margin: 0 auto;
+    }
+    h5{
+        font-weight: 500;
+    }
+    p{
+        font-weight: 700;
+    }
+
+    
+
+}
+
+
+

@@ -1,4 +1,7 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-coin-list',
@@ -7,9 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoinListComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+  bannerData: any=[];
+
+
+  constructor(private api : ApiService) { }
+
+      ngOnInit(): void {
+        this.getBannerData();
+        this.getAllData();
+      }
+
+     getBannerData(){
+     this.api.getTrendingCurrency("INR")
+     .subscribe(res => {
+      console.log(res);
+      this.bannerData = res;
+      });
+     }
+     getAllData(){
+     this.api.getCurrencyData("INR")
+     .subscribe(res => {
+      console.log(res);
+      });
+     }
+
+
+
+
+
+
+
+
+
 
 }
