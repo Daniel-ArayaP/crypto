@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
-
+import { CurrencyService } from '../service/currency.service';
 import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
@@ -19,6 +19,7 @@ export class CoinListComponent implements OnInit {
 
 
   bannerData: any=[];
+  currency : string = "INR";
   dataSource!: MatTableDataSource<any>;
   displayedColumns: string[] = ['symbol', 'current_price', 'price_change_percentage_24h', 'market_cap'];
 
@@ -26,11 +27,18 @@ export class CoinListComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private api : ApiService,private router : Router ) { }
+  constructor(private api : ApiService,private router : Router, private currencyService : CurrencyService) { }
 
       ngOnInit(): void {
         this.getBannerData();
         this.getAllData();
+        this.currencyService.getCurrency()
+        .subscribe(val=>{
+         this.currency = val;
+         this.getAllData();
+         this.getBannerData();
+
+        })
       }
 
      getBannerData(){

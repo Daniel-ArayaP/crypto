@@ -5,7 +5,7 @@
             <h6>Check all the crypto currency !</h6>
         </div>
         <div class="sub-header">
-           <marquee behavior="scroll" onmouseover="stop()" onmouseout="start()" loop="infinite" direction="left">
+           <marquee behavior="scroll" onmouseover="stop()" onmouseout="start()" loop="infinite" direction="right">
             <div class="row">
                 <ng-container *ngFor="let row of bannerData">
                     <div class="col-1">
@@ -13,7 +13,7 @@
                             <img [src]="row.image" width="100" class="img-fluid" alt="">
                             <div class="card body">
                              <h5 class="card-title">{{row.symbol | uppercase}} <span class="text-danger">{{row.market_cap_change_percentage_24h}}%</span></h5>
-                             <p class="card-text">{{row.current_price |currency: "INR"}}</p>
+                             <p class="card-text">{{row.current_price | currency: currency}}</p>
                             </div>
                         </div>
                     </div>
@@ -22,37 +22,38 @@
            </marquee> 
         </div>
     </div>
+</div>
     <div class="container">
+      <!-- Table -->
         <mat-form-field appearance="standard">
-
             <mat-label>Filter</mat-label>
             <input style="color:aliceblue" matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
         </mat-form-field>
         
         <div class="mat-elevation-z8">
             <table mat-table [dataSource]="dataSource" matSort>
-          
-              <!-- ID Column -->
+              <!-- SYMBOL Column -->
               <ng-container matColumnDef="symbol">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Coin </th>
                 <td mat-cell *matCellDef="let row">
-                    <img [src]="row.image" width="50" class="img-fluid" alt="">
-                    <span class="mx-2"> {{row.symbol| uppercase}}</span> </td>
+                    <img [src]="row.image" width="50" alt="">
+                    <span class="mx-2"> {{row.symbol| uppercase}}</span> 
+                  </td>
               </ng-container>
           
-              <!-- Progress Column -->
+              <!-- PRICE Column -->
               <ng-container matColumnDef="current_price">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
-                <td mat-cell *matCellDef="let row"> {{row.current_price| currency:'INR'}}</td>
+                <td mat-cell *matCellDef="let row"> {{row.current_price| currency:currency}}</td>
               </ng-container>
           
-              <!-- Name Column -->
+              <!-- PRICE CHANGE Column -->
               <ng-container matColumnDef="price_change_percentage_24h">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> 24h Change </th>
                 <td mat-cell *matCellDef="let row"> {{row.price_change_percentage_24h}}% </td>
               </ng-container>
           
-              <!-- Fruit Column -->
+              <!-- MARKETCAP Column -->
               <ng-container matColumnDef="market_cap">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Market Cap </th>
                 <td mat-cell *matCellDef="let row"> {{row.market_cap| currency:'INR'}} </td>
@@ -75,4 +76,3 @@
     </div>
 
 
-</div>
