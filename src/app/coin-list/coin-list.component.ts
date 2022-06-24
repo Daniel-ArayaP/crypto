@@ -42,14 +42,14 @@ export class CoinListComponent implements OnInit {
       }
 
      getBannerData(){
-     this.api.getTrendingCurrency("INR")
+     this.api.getTrendingCurrency(this.currency)
      .subscribe(res => {
       console.log(res);
       this.bannerData = res;
       });
      }
      getAllData(){
-     this.api.getCurrencyData("INR")
+     this.api.getCurrencyData(this.currency)
      .subscribe(res => {
       console.log(res);
       this.dataSource = new MatTableDataSource(res);

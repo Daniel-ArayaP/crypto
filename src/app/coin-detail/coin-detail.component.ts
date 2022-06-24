@@ -5,6 +5,7 @@ import { ApiService } from '../service/api.service';
 import { ChartConfiguration, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { RESOURCE_CACHE_PROVIDER } from '@angular/platform-browser-dynamic';
+import { CurrencyService } from '../service/currency.service';
 
 @Component({
   selector: 'app-coin-detail',
@@ -46,7 +47,7 @@ export class CoinDetailComponent implements OnInit {
   @ViewChild(BaseChartDirective) mylineChart !: BaseChartDirective;
 
 
-  constructor(private api : ApiService, private activatedRoute: ActivatedRoute) { }
+  constructor(private api : ApiService, private activatedRoute: ActivatedRoute, private currencyService : CurrencyService) { }
 
   ngOnInit(): void {
 
@@ -54,7 +55,13 @@ export class CoinDetailComponent implements OnInit {
       this.coinId = val['id'];
   });
   this.getCoinData();
-  }
+  this.getGraphData(this.days);
+  this.currencyService.getCurrency().subscribe(val =>{
+    this.currency = val;
+    this.getGraphData(this.days);
+    this.coinData()
+  })
+   }
 
   getCoinData(){
     this.api.getCurrencyById(this.coinId)
@@ -74,6 +81,7 @@ export class CoinDetailComponent implements OnInit {
     this.days = days
     this.api.getGraphicalCurrencyData(this.coinId,this.currency,this.days)
     .subscribe(res=>{
+      console.log(res);
       setTimeout(() => {
         this.mylineChart.chart?.update();
       }, 200);
@@ -85,9 +93,11 @@ export class CoinDetailComponent implements OnInit {
         let time = date.getHours() > 12 ?
         `${date.getHours() - 12}: ${date.getMinutes()} PM` :
         `${date.getHours()}: ${date.getMinutes()} AM`
-        return this.days === 1 ? time : date.toLocaleDateString();
+        return days === 1 ? time : date.toLocaleDateString();
       });
     });
   }
   }
+
+
 

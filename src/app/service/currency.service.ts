@@ -13,6 +13,7 @@ export class CurrencyService {
     return this.selectedCurrency$.asObservable();
   }
   setCurrency(currency : string){
+    
     this.selectedCurrency$.next(currency);
   }
 }
