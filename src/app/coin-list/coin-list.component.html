@@ -1,8 +1,14 @@
 <div class="banner">
     <div class="container">
         <div class="header">
-            <h2>Crypto Checker Online </h2>
-            <h6>Check all the crypto currency !</h6>
+
+          
+    <marquee behavior="scroll" onmouseover="stop()" onmouseout="start()" loop="infinite" direction="right">CRYPTO CHECKER ONLINE
+    </marquee>
+    
+    <marquee behavior="scroll" onmouseover="stop()" onmouseout="start()" loop="infinite" direction="right">CHECK ALL THE CRYPTO CURRENCY
+    </marquee>
+            
         </div>
         <div class="sub-header">
            <marquee behavior="scroll" onmouseover="stop()" onmouseout="start()" loop="infinite" direction="right">
@@ -26,8 +32,8 @@
     <div class="container">
       <!-- Table -->
         <mat-form-field appearance="standard">
-            <mat-label>Filter</mat-label>
-            <input style="color:aliceblue" matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
+            <mat-label>Filter de cryptos</mat-label>
+            <input style="color:rgb(32, 139, 233)" matInput (keyup)="applyFilter($event)" placeholder="Ingrese la cryptomoneda que desee buscar" #input >
         </mat-form-field>
         
         <div class="mat-elevation-z8">

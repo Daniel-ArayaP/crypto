@@ -18,6 +18,7 @@ import { CoinDetailComponent } from './coin-detail/coin-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {NgChartsModule} from 'ng2-charts';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -26,7 +27,8 @@ import {NgChartsModule} from 'ng2-charts';
   declarations: [
     AppComponent,
     CoinListComponent,
-    CoinDetailComponent
+    CoinDetailComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
