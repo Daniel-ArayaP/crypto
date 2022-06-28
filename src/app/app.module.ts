@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {NgChartsModule} from 'ng2-charts';
 import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -28,7 +29,8 @@ import { FooterComponent } from './footer/footer.component';
     AppComponent,
     CoinListComponent,
     CoinDetailComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
